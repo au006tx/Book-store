@@ -7,6 +7,7 @@ app_name = 'libraryapp'
 
 urlpatterns = [
     path('books/', api_books_list_view, name='books_list'),
+    path('users/', ListUserView.as_view(), name='user_list'),
 ]
 
 
