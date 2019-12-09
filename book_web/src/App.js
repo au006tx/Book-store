@@ -8,6 +8,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Home from './screens/home';
 import Books from './screens/books';
 import About from './screens/about';
+import Contact from './screens/contact';
 
 
 
@@ -63,6 +64,8 @@ class App extends React.Component {
      <Nav.Link href="about"><b> About </b></Nav.Link> 
    
        <Nav.Link href="books"><b> Books </b></Nav.Link>
+       <Nav.Link href="contact"><b> Contact </b></Nav.Link>
+
     </Nav>
   </Navbar>
     
@@ -71,6 +74,8 @@ class App extends React.Component {
               <Route exact path='/home' component={Home} />
               <Route exact path='/books' component={Books} />
               <Route path='/about' component={About} />
+              <Route path='/contact' component={Contact} />
+
           </Switch>
         </div>
       </Router>
