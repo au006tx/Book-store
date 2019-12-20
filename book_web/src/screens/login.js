@@ -1,7 +1,6 @@
 import React from 'react';
 import { Button, Form } from 'react-bootstrap';
 
-
 class Login extends React.Component {
   render() {
     return (
@@ -22,8 +21,7 @@ class Login extends React.Component {
                     <Form.Group controlId="formBasicPassword">
                         <Form.Label>Password</Form.Label>
                         <Form.Control type="password" placeholder="Password" />
-                    </Form.Group>
-                     
+                    </Form.Group>                     
                 </Form>
                 <div style={{display:'flex', justifyContent:'center'}}>
                     <Button className='inner-content' variant="outline-secondary" type="submit">
