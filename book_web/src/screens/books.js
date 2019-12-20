@@ -9,7 +9,8 @@ class Books extends React.Component {
     constructor(props) {
         super(props) 
         this.state = {
-            books : []    
+            books : [],
+            isAuthenticated : false,    
         }
     }
 
@@ -64,18 +65,42 @@ class Books extends React.Component {
         )
     }
 
+    
+
+
     render(){
         console.log('Fetching....')
         // const books= this.state.books; 
         // console.log(books)       
         return(
-            <div> 
-                <div style={{display: 'flex',justifyContent:'space-between',flexDirection:'row', flexWrap: "wrap"}}>
-                    {this.alldata()}
+            <div>
+                {!this.state.isAuthenticated ? (
+                <div style={{ display: 'flex', justifyContent: 'flex-start', flexDirection: 'row', width: '100%', height: '50%',}}>   
+                <div style={{ display: 'flex', flexDirection: 'row', width: '70%', height: '600px'}}>
+                    <img src="/lost.png" alt="base" width='100%' height='100%'/>
                 </div>
+                <div style={{ display: 'flex', flexDirection: 'column', width: '50%', height: '500px', justifyContent: 'center'}}>
+                    <div class='inner-content'>
+                        <h2 style={{color: 'grey'}}> Please make sure you are logged in !! </h2>
+                        
+                        
+                    </div>
+                </div>
+            
             </div>
+                ) : (
+                <div>
+                    <div style={{display: 'flex',justifyContent:'flex-start',flexDirection:'row', flexWrap: "wrap"}}>
+                        {this.allstudents()}
+                    </div>     
+                </div>
+                )}      
+            </div>
+
         )
     };
 }
 
 export default Books;
+
+

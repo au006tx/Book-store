@@ -9,72 +9,48 @@ import Home from './screens/home';
 import Books from './screens/books';
 import About from './screens/about';
 import Contact from './screens/contact';
-
-
-
-// function App() {
-//   return (
-  //   <Router>
-
-  //   <div>
-      
-  //     <Navbar bg="dark" variant="dark">
-  //   <Navbar.Brand href="#"><h1> Tarzan Skills Library </h1></Navbar.Brand>
-  //   <Nav className="mr-auto">
-  //     {/* <Nav.Link href="#home">Home</Nav.Link>
-  //     <Nav.Link href="#features">Features</Nav.Link>
-  //     <Nav.Link href="#pricing">Pricing</Nav.Link> */}
-  //   </Nav>
-    
-  // </Navbar>
-  //     <div style={{paddingLeft:50, paddingRight:50, flexWrap : 'wrap'}}>
-     
-  //     <Home />
-      
-
-
-  //     </div>
-  //   </div>
-  //   </Router>
-//   );
-// }
+import Login from './screens/login';
+import Signup from './screens/signup';
 
 class App extends React.Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      isAuthenticated : false,
+    }
+  }
   render() {
     return (
     <Router>
         <div>
-          <Navbar bg="dark" variant="dark">
-            <Navbar.Brand href='/home'>
-          <img alt="Brand" src="/logo.ico"
-        width="30"
-        height="30"
-        className="d-inline-block align-top"
-      /> {' '} <b> Tarzan Skills Library </b>
-      
-      
-      
-    </Navbar.Brand>
+          <Navbar style={{backgroundColor:"#3498DB"}} variant="dark">
+            <Navbar.Brand href='/'>
+              <img alt="Brand" src="/logo.ico" width="30" height="30" className="d-inline-block align-top" /> 
+                {' '} <b> Tarzan Skills Library </b>
+            </Navbar.Brand>
+            <Nav className="mr-auto" style={{display:'flex',justifyContent:'flex-end'}}>
+              {!this.state.isAuthenticated ? (
+                  <Nav.Link href="login"><b> Login </b></Nav.Link>
+              ) : (
+                <div>
+                                      <Nav.Link href="Logout"><b> Logout </b></Nav.Link>
 
-    <Nav className="mr-auto" style={{display:'flex',justifyContent:'flex-end'}}>
-
-         {/* <Nav.Link href="home">Home</Nav.Link>  */}
-
-          
-     <Nav.Link href="about"><b> About </b></Nav.Link> 
-   
-       <Nav.Link href="books"><b> Books </b></Nav.Link>
-       <Nav.Link href="contact"><b> Contact </b></Nav.Link>
-
-    </Nav>
-  </Navbar>
+                </div>
+              )}
+              <Nav.Link href="books"><b> Books </b></Nav.Link>
+            </Nav>
+          </Navbar>
     
           
           <Switch>
-              <Route exact path='/home' component={Home} />
+              <Route exact path='/' component={Home} />
+              <Route exact path='/login' component={Login} />
+              <Route exact path='/signup' component={Signup} />
+
+
               <Route exact path='/books' component={Books} />
-              <Route path='/about' component={About} />
-              <Route path='/contact' component={Contact} />
+              {/* <Route path='/about' component={About} /> */}
+              {/* <Route path='/contact' component={Contact} /> */}
 
           </Switch>
         </div>
