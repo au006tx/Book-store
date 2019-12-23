@@ -1,13 +1,14 @@
 import React from 'react';
 import axios from 'axios';
+import { connect } from 'react-redux';
+
 import { Button, Card, CardGroup } from 'react-bootstrap';
 
 class Books extends React.Component {
     constructor(props) {
         super(props) 
         this.state = {
-            books : [],
-            isAuthenticated : false,    
+            books : [],   
         }
     }
 
@@ -39,13 +40,12 @@ class Books extends React.Component {
         )
     }
 
-    render(){
-        console.log('Fetching....')
-        // const books= this.state.books; 
-        // console.log(books)       
+    render(){   
+        const token = this.state.token;
+        console.log(token); 
         return(
             <div>
-                {!this.state.isAuthenticated ? (
+                {!this.state.token ? (
                     <div style={{ display: 'flex', justifyContent: 'flex-start', flexDirection: 'row', width: '100%', height: '50%',}}>   
                         <div style={{ display: 'flex', flexDirection: 'row', justifyContent:'center', width: '70%', height: '600px', marginTop:'50px'}}>
                             <img src="/noauth.png" alt="base" width='80%' height='80%'/>
@@ -54,24 +54,25 @@ class Books extends React.Component {
                             <div className='inner-content'>
                                 <h5 style={{color: 'grey'}}> Sorry, you are not authorized to access this page. </h5>  
                                 <h6 style={{color: 'grey'}}> Please <a href='/login'> Login  </a></h6>  
-
-                     
- 
                             </div>
                         </div>
                     </div>
                     ) : (
-                    <div>
-                        <div style={{display: 'flex',justifyContent:'flex-start',flexDirection:'row', flexWrap: "wrap"}}>
-                            {this.allstudents()}
-                        </div>     
-                    </div>
-                )}      
+                    <div style={{display: 'flex',justifyContent:'flex-start',flexDirection:'row', flexWrap: "wrap"}}>
+                        {this.alldata()}
+                    </div>     
+                )}    
+                  
             </div>
         )
     };
 }
 
-export default Books;
+const mapStateToProps = (state) => {
+    return {
+        token: state.auth.token
+    };
+}
 
+export default connect(mapStateToProps)(Books);
 
