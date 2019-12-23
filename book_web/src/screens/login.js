@@ -52,8 +52,7 @@ class Login extends React.Component {
                     <Form.Group controlId="formBasicUsername">
                         <Form.Label>Username</Form.Label>
                         <Form.Control type="text" placeholder="Enter username" value={this.state.value} onChange={(event) => this.setState({ username : event.target.value }) }/>
-                    </Form.Group>
-                    
+                    </Form.Group>  
                     <Form.Group controlId="formBasicPassword">
                         <Form.Label>Password</Form.Label>
                         <Form.Control type="password" placeholder="Password" value={this.state.value} onChange={(event) => this.setState({ password : event.target.value }) } />

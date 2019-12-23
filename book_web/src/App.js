@@ -8,6 +8,8 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import reducers from './reducers';
 import { createStore } from 'redux';
+import { connect } from 'react-redux';
+
 
 import { PersistGate } from 'redux-persist/integration/react';
 import { persistStore } from 'redux-persist';
@@ -17,6 +19,7 @@ import Books from './screens/books';
 import Login from './screens/login';
 import Signup from './screens/signup';
 
+import history from './history';
 
 import store from './store';
 let persistor = persistStore(store)
@@ -32,20 +35,16 @@ class App extends React.Component {
     return (
       <Provider store={createStore(reducers)}>
         <PersistGate loading={null} persistor={persistor}>
-          <Router>
-            <div>
+          <Router history={history}>
+       
               <Navbar style={{backgroundColor:"#3498DB"}} variant="dark">
                 <Navbar.Brand href='/'>
                   <img alt="Brand" src="/logo.ico" width="30" height="30" className="d-inline-block align-top" /> 
                     {' '} <b> Tarzan Skills Library </b>
                 </Navbar.Brand>
-                <Nav className="mr-auto" style={{display:'flex',justifyContent:'flex-end'}}>                    {!this.state.isAuthenticated ? (
+                <Nav className="mr-auto" style={{display:'flex',justifyContent:'flex-end'}}>                   
                   <Nav.Link href="login"><b> Login </b></Nav.Link>
-                  ):(
-                  <div>
-                    <Nav.Link href="Logout"><b> Logout </b></Nav.Link>
-                  </div>
-                  )}
+                  
                   <Nav.Link href="books"><b> Books </b></Nav.Link>
                 </Nav>
               </Navbar>  
@@ -55,7 +54,7 @@ class App extends React.Component {
                 <Route exact path='/signup' component={Signup} />
                 <Route exact path='/books' component={Books} />
               </Switch>
-            </div>
+    
           </Router>
         </PersistGate>
     </Provider>
@@ -63,5 +62,6 @@ class App extends React.Component {
     );
   }
 }
+
 
 export default App;
