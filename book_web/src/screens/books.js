@@ -41,11 +41,11 @@ class Books extends React.Component {
     }
 
     render(){   
-        const token = this.state.token;
+        const token = this.props.token;
         console.log(token); 
         return(
             <div>
-                {!this.state.token ? (
+                {!this.props.token ? (
                     <div style={{ display: 'flex', justifyContent: 'flex-start', flexDirection: 'row', width: '100%', height: '50%',}}>   
                         <div style={{ display: 'flex', flexDirection: 'row', justifyContent:'center', width: '70%', height: '600px', marginTop:'50px'}}>
                             <img src="/noauth.png" alt="base" width='80%' height='80%'/>

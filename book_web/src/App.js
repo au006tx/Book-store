@@ -3,12 +3,12 @@ import React from 'react';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Navbar, Nav } from 'react-bootstrap';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { Router, Switch, Route } from 'react-router-dom';
 
 import { Provider } from 'react-redux';
 import reducers from './reducers';
 import { createStore } from 'redux';
-import { connect } from 'react-redux';
+// import { connect } from 'react-redux';
 
 
 import { PersistGate } from 'redux-persist/integration/react';
@@ -33,7 +33,7 @@ class App extends React.Component {
   }
   render() {
     return (
-      <Provider store={createStore(reducers)}>
+      <Provider store={store}>
         <PersistGate loading={null} persistor={persistor}>
           <Router history={history}>
        
@@ -43,8 +43,10 @@ class App extends React.Component {
                     {' '} <b> Tarzan Skills Library </b>
                 </Navbar.Brand>
                 <Nav className="mr-auto" style={{display:'flex',justifyContent:'flex-end'}}>                   
+                  {this.props.token ? 
                   <Nav.Link href="login"><b> Login </b></Nav.Link>
-                  
+                  : null
+                  }
                   <Nav.Link href="books"><b> Books </b></Nav.Link>
                 </Nav>
               </Navbar>  
