@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 
 import axios from 'axios';
 
+import Logout from './logout';
 
 class Login extends React.Component {
     constructor(props){
@@ -65,9 +66,7 @@ class Login extends React.Component {
                 </div>       
             </div>   
         ):(       
-        <div> 
-            <h1> Logout </h1>
-        </div>
+        <Logout />
         )
     );
   }
