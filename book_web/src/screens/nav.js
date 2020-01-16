@@ -2,6 +2,8 @@ import React from 'react';
 import { Navbar, Nav } from 'react-bootstrap';
 import { updateAuth } from '../actions';
 import { connect } from 'react-redux';
+import { Avatar, Icon } from 'antd';
+
 
 
 class NavBar extends React.Component {
@@ -19,7 +21,7 @@ class NavBar extends React.Component {
                   <img alt="Brand" src="/logo.ico" width="30" height="30" className="d-inline-block align-top" /> 
                     {' '} <b> Tarzan Skills Library </b>
                 </Navbar.Brand>
-                <Nav className="mr-auto" style={{display:'flex',justifyContent:'flex-end'}}> 
+                <Nav className="mr-auto" style={{display:'flex',justifyContent:'space-between'}}> 
                     {(!this.props.token ? (
                         <Nav.Link href="login"><b> Login </b></Nav.Link>
                         ):(

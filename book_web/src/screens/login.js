@@ -26,12 +26,14 @@ class Login extends React.Component {
             }).then(res => {
                 if(res.status === 200) {
                     const key = res.data.key;
-                    this.props.updateAuth(key);
-                }    
+                    this.props.updateAuth(key, username);
+                    console.log(username);
+                }   
             }).catch(error => {
                 console.log(error);            
             });
-            this.props.history.push('/books')
+            this.props.history.push('/books');
+            
     }
 
   render() {

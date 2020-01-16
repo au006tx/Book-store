@@ -1,6 +1,11 @@
 import React from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
+import { updateAuth } from '../actions';
+
+import { Avatar, Icon } from 'antd';
+
+
 
 import { Button, Card, CardGroup } from 'react-bootstrap';
 
@@ -8,7 +13,8 @@ class Books extends React.Component {
     constructor(props) {
         super(props) 
         this.state = {
-            books : [],   
+            books : [], 
+            username : this.props.username,
         }
     }
 
@@ -43,6 +49,8 @@ class Books extends React.Component {
     render(){  
         const token = this.props.token;
         console.log(token); 
+        const username = this.props.username;
+        console.log('welcome', username);
         return(
             <div>
                 {!this.props.token ? (
@@ -58,9 +66,15 @@ class Books extends React.Component {
                         </div>
                     </div>
                     ) : (
-                    <div style={{display: 'flex',justifyContent:'flex-start',flexDirection:'row', flexWrap: "wrap"}}>
-                        {this.alldata()}
-                    </div>     
+                    <div>    
+                        <div style={{margin:10}}> 
+                            <Avatar icon="user" shape='square'/>
+                            <span style={{margin:5}}> <b> {username} </b></span>
+                        </div>
+                        <div style={{display: 'flex',justifyContent:'flex-start',flexDirection:'row', flexWrap: "wrap"}}>   
+                            {this.alldata()}    
+                        </div> 
+                    </div>
                 )}    
                   
             </div>
@@ -70,9 +84,10 @@ class Books extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-        token: state.auth.token
+        token: state.auth.token,
+        username : state.auth.username
     };
 }
 
-export default connect(mapStateToProps)(Books);
+export default connect(mapStateToProps, { updateAuth })(Books);
 

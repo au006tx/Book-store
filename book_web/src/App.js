@@ -2,6 +2,7 @@ import React from 'react';
 
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import 'antd/dist/antd.css';
 import { Navbar, Nav } from 'react-bootstrap';
 import { Router, Switch, Route } from 'react-router-dom';
 
